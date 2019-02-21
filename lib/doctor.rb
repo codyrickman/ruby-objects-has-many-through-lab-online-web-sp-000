@@ -18,7 +18,8 @@ class Doctor
   end
   def patients
     my_appts = Appointment.all
-    my_patients = my_appts.select {|appt| appt.doctor == self}
+    appts = my_appts.select {|appt| appt.doctor == self}
+    my_patients = appts.collect {|appt| appt.patient}
     return my_patients
   end
 end
